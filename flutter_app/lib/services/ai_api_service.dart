@@ -24,7 +24,8 @@ class AiExplanationResult {
 }
 
 class AiApiService {
-  final String baseUrl = kApiBaseUrl;
+  AiApiService({String? baseUrl}) : baseUrl = baseUrl ?? kApiBaseUrl;
+  final String baseUrl;
   static String _normalizeBaseUrl(String url) {
     final u = url.trim();
     if (u.startsWith('http:') && !u.startsWith('http://')) return 'http://${u.substring(5)}';

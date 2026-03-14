@@ -9,6 +9,7 @@ GitHub Pages 앱(`https://jinsikhan.github.io/biblessam/`)에서 **데이터가 
 3. **Root Directory**를 `web` 으로 지정.
 4. **Environment Variables**에 필요한 값 설정 (예: `GEMINI_API_KEY` 등, 루트 `.env` 참고).
 5. 배포 후 나온 URL 복사 (예: `https://biblessam-xxxx.vercel.app`).
+6. **배포 보호 끄기 (데이터가 안 나올 때):** 프로젝트 **Settings** → **Deployment Protection** → Production은 **Standard Protection** 또는 **None**으로 두어 공개 접근 가능하게 하기. (보호가 켜져 있으면 API가 401을 반환해 앱에서 데이터가 안 나옵니다.)
 
 ## 2. GitHub에 API 주소 알려주기
 

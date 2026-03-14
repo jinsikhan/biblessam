@@ -7,7 +7,8 @@ import '../models/daily_chapter.dart';
 import '../models/emotion_theme.dart';
 
 class BibleApiService {
-  final String baseUrl = kApiBaseUrl;
+  BibleApiService({String? baseUrl}) : baseUrl = baseUrl ?? kApiBaseUrl;
+  final String baseUrl;
 
   Future<DailyChapter?> getDaily({String? date}) async {
     final uri = date != null

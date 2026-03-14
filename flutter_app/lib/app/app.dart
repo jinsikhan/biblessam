@@ -7,15 +7,18 @@ import '../services/bible_api_service.dart';
 import '../services/ai_api_service.dart';
 
 class App extends StatelessWidget {
-  const App({super.key});
+  const App({super.key, this.apiBaseUrl});
+
+  /// 웹 배포 시 config.json에서 로드한 API 주소 (없으면 빌드 시 dart-define 사용)
+  final String? apiBaseUrl;
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => StorageService()..load()),
-        Provider(create: (_) => BibleApiService()),
-        Provider(create: (_) => AiApiService()),
+        Provider(create: (_) => BibleApiService(baseUrl: apiBaseUrl)),
+        Provider(create: (_) => AiApiService(baseUrl: apiBaseUrl)),
       ],
       child: Consumer<StorageService>(
         builder: (context, storage, _) {
