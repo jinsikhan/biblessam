@@ -39,9 +39,11 @@ jobs:
 
       - name: Build web
         env:
+          # Secret이 있으면 사용, 없으면 아래 기본값(실제 배포된 API 주소)
           API_BASE_URL: ${{ secrets.API_BASE_URL }}
+          DEFAULT_API_URL: https://biblessam-cco89x8o6-01077.vercel.app
         run: |
-          API_URL="${API_BASE_URL:-https://biblessam-api.vercel.app}"
+          API_URL="${API_BASE_URL:-$DEFAULT_API_URL}"
           cd flutter_app && flutter build web --release --base-href "/biblessam/" --dart-define=API_BASE_URL="$API_URL"
 
       - name: Setup Pages
