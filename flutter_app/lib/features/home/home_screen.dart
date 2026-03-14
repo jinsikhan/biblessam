@@ -479,7 +479,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   gradient: LinearGradient(
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
-                    colors: [bg.withValues(alpha: 0), bg],
+                    colors: [bg.withOpacity(0), bg],
                   ),
                 ),
               ),
