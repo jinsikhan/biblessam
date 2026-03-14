@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "zsh /Users/hanjinsik/Desktop/Bible/scripts/verify-checklist.sh 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  }
+}

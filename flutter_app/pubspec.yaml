@@ -1,0 +1,33 @@
+name: bible_ssam
+description: BibleSsam - 지금 내 상황에 맞는 말씀, AI 쉬운 설명 + 삶 적용
+publish_to: none
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.5.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # HTTP & routing
+  http: ^1.2.0
+  go_router: ^14.2.0
+  # State
+  provider: ^6.1.2
+  # Local storage
+  shared_preferences: ^2.2.2
+  flutter_secure_storage: ^9.2.2
+  # UI
+  shimmer: ^3.0.0
+  table_calendar: ^3.0.9
+  intl: ^0.19.0
+  google_fonts: ^6.2.1
+  flutter_markdown: ^0.7.4+1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true

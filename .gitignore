@@ -1,0 +1,25 @@
+# Environment
+.env
+.env.local
+.env*.local
+
+# Node
+node_modules/
+
+# Next.js
+web/.next/
+web/out/
+
+# Docker volumes
+pgdata/
+redisdata/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo

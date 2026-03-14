@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#49ec13",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#152210",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>BibleSsam - Home</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen pb-24">
+<!-- Header & Search Section -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-4 pt-4 pb-2">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<div class="bg-primary p-2 rounded-lg">
+<span class="material-symbols-outlined text-background-dark">menu_book</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight">BibleSsam</h1>
+</div>
+<button class="size-10 flex items-center justify-center rounded-full bg-slate-200 dark:bg-slate-800">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-3 bg-slate-100 dark:bg-slate-800 border-none rounded-xl focus:ring-2 focus:ring-primary text-sm" placeholder="Search scriptures, prayers, or topics" type="text"/>
+</div>
+</header>
+<main class="px-4 space-y-6 mt-4">
+<!-- Reading Streak & Progress -->
+<section class="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="bg-primary/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary">local_fire_department</span>
+</div>
+<div>
+<p class="text-sm font-bold">Reading Streak: 7 Days</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">You're doing great! Keep it up.</p>
+</div>
+</div>
+<button class="text-xs font-bold text-primary uppercase tracking-wider">View Stats</button>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-medium">
+<span>Daily Goal Progress</span>
+<span>6/10 mins</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[60%] rounded-full"></div>
+</div>
+</div>
+</section>
+<!-- Today's Word Card -->
+<section>
+<h2 class="text-lg font-bold mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">auto_awesome</span> Today's Word
+            </h2>
+<div class="relative overflow-hidden rounded-xl bg-slate-900 text-white p-6 min-h-[180px] flex flex-col justify-end">
+<div class="absolute inset-0 opacity-40">
+<img class="w-full h-full object-cover" data-alt="A peaceful forest scene with sunlight filtering through trees" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDC1Nn9spCojCBjKej2D3TpiRYIt3-ysZQ_p1vjVjw514zpw_ATwnho52Kov-x-4Y5IuIhIBeQXD8cUGLciDdkbu2Q6Ln-oG30_bfRjY0jDv_p8kzVO30fUqi1py1M95XSIJ5BQ3f1G5kB_HHgiviw1L99wHbHp-MWDyrbgkQDBcR_ba1KL99t-BSQTrOcRYy6WsONpXfufS7gxpYDB3tEXIlU2tWbswPVUV7HLtAev-0_CqLTkmuZYnKX14scL1Y1CBWgCVd3NKA2"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<div class="relative z-10">
+<p class="text-primary font-bold text-sm mb-1 uppercase tracking-widest">John 3:16</p>
+<p class="text-lg font-medium leading-snug mb-4">"For God so loved the world that he gave his one and only Son..."</p>
+<button class="bg-primary text-background-dark px-6 py-2 rounded-lg font-bold text-sm inline-flex items-center gap-2">
+                        Read Full Chapter <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- How are you feeling Section -->
+<section>
+<h2 class="text-lg font-bold mb-3">How are you feeling?</h2>
+<div class="flex gap-3 overflow-x-auto pb-2 no-scrollbar">
+<button class="whitespace-nowrap px-5 py-2 rounded-full bg-primary text-background-dark font-bold text-sm">Comfort</button>
+<button class="whitespace-nowrap px-5 py-2 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-medium text-sm">Grateful</button>
+<button class="whitespace-nowrap px-5 py-2 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-medium text-sm">Anxious</button>
+<button class="whitespace-nowrap px-5 py-2 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-medium text-sm">Courage</button>
+<button class="whitespace-nowrap px-5 py-2 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-medium text-sm">Love</button>
+<button class="whitespace-nowrap px-5 py-2 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-medium text-sm">Wisdom</button>
+</div>
+</section>
+<!-- Old Testament Recommendations -->
+<section>
+<div class="flex justify-between items-end mb-3">
+<h2 class="text-lg font-bold">Old Testament</h2>
+<a class="text-primary text-sm font-bold" href="#">See all</a>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-2 no-scrollbar">
+<div class="min-w-[140px] group">
+<div class="aspect-[3/4] rounded-xl bg-slate-200 dark:bg-slate-800 mb-2 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Old paper texture background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLOmnHEfojjXrRBoKRwnjLvFkq4A_8JBzKrOhJObRKaRPMGKthdWkx1_BkDTrbs1V5yEOiUmegF0g2bMmc_dbv3C7HamAGNqeUenedXi7vfT9I976JcOBl1wTSUEL5nwbBKEgWQCeuy0g9yviaCyHYiymVWos65LALH5P5J6cL3O4XkTFtJvET7kOtAepgIH_GCRiFf1s2umaP9kBqEkKJpZHe_-65dI-gMwrVIdLqCg3WemhgcCTBI46RKfg1LlwQYC83x80-HefJ"/>
+<div class="absolute inset-0 flex items-center justify-center p-4">
+<span class="text-white font-bold text-lg text-center drop-shadow-md">Genesis</span>
+</div>
+</div>
+<p class="text-sm font-semibold">The Beginning</p>
+<p class="text-xs text-slate-500">50 Chapters</p>
+</div>
+<div class="min-w-[140px] group">
+<div class="aspect-[3/4] rounded-xl bg-slate-200 dark:bg-slate-800 mb-2 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Ocean waves at sunset" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBl-rGo9DmPVwDLKK-c_hVmVHk67ny9rxytVPe0YcnUPhUj_6dtyL4pZ6vuBuXngNle4rbMdpcE1d-L5b8hFSLsGXa8LVT5a75GEn-CmV1E-gPns9b55bBXVqa_8IiYPfI2TD8hlCPfs4xdIaCHCzIpdPST-lk4iSzQFaj8WR_MSl4qwJv0HxRxJ1Avk3M5YYOUxXBFvHWM5_cUDTWNUbnpA43LdsYWBtDg0-e7-IceinLF2T5X66WijLPTnAuLakqcTTsnxDbE8ABu"/>
+<div class="absolute inset-0 flex items-center justify-center p-4">
+<span class="text-white font-bold text-lg text-center drop-shadow-md">Exodus</span>
+</div>
+</div>
+<p class="text-sm font-semibold">Freedom</p>
+<p class="text-xs text-slate-500">40 Chapters</p>
+</div>
+<div class="min-w-[140px] group">
+<div class="aspect-[3/4] rounded-xl bg-slate-200 dark:bg-slate-800 mb-2 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Golden sand dunes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkbWbJW_r-Wb8WkoSdNrCsJjOgWySjej8W25J7C3exz36ngVUAwAT5K1uDmWiqSvqhQ-6yhZzE5cBzsQx1z5ujTZLWa4jdlCLRzEo2LKpn1NQHpiaTGEMvmRwMjIDh5zJ8lvNXioTsLrLhDY6t0XAvnp4qIgYH2ndalb2-zAxo4pc64OuPyhnmjmHyf0U59tcVhDGTcEvhN8uIG5eiYJXfHtAhefEJF2vYtEPU7hl8KqMn1gci4qtNNY01760kfhuTvEfCBebmbLsv"/>
+<div class="absolute inset-0 flex items-center justify-center p-4">
+<span class="text-white font-bold text-lg text-center drop-shadow-md">Psalms</span>
+</div>
+</div>
+<p class="text-sm font-semibold">Songs of Praise</p>
+<p class="text-xs text-slate-500">150 Chapters</p>
+</div>
+</div>
+</section>
+<!-- New Testament Recommendations -->
+<section>
+<div class="flex justify-between items-end mb-3">
+<h2 class="text-lg font-bold">New Testament</h2>
+<a class="text-primary text-sm font-bold" href="#">See all</a>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-2 no-scrollbar">
+<div class="min-w-[200px] group">
+<div class="aspect-video rounded-xl bg-primary/10 mb-2 overflow-hidden relative border border-primary/20">
+<div class="p-4 h-full flex flex-col justify-between">
+<span class="material-symbols-outlined text-primary">menu_book</span>
+<span class="text-lg font-bold">Matthew</span>
+</div>
+</div>
+<p class="text-sm font-semibold">The Messiah's Life</p>
+</div>
+<div class="min-w-[200px] group">
+<div class="aspect-video rounded-xl bg-primary/10 mb-2 overflow-hidden relative border border-primary/20">
+<div class="p-4 h-full flex flex-col justify-between">
+<span class="material-symbols-outlined text-primary">diversity_3</span>
+<span class="text-lg font-bold">Acts</span>
+</div>
+</div>
+<p class="text-sm font-semibold">The Early Church</p>
+</div>
+</div>
+</section>
+<!-- Recently Read -->
+<section>
+<h2 class="text-lg font-bold mb-3">Recently Read</h2>
+<div class="flex gap-4 overflow-x-auto pb-2 no-scrollbar">
+<div class="min-w-[160px] bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-100 dark:border-slate-800 flex flex-col gap-2">
+<p class="text-xs font-bold text-slate-400 uppercase">Chapter 5</p>
+<p class="text-md font-bold">Romans</p>
+<div class="mt-2 w-full bg-slate-100 dark:bg-slate-800 h-1 rounded-full">
+<div class="bg-primary h-full w-[45%]"></div>
+</div>
+<p class="text-[10px] text-slate-400 text-right">45% Read</p>
+</div>
+<div class="min-w-[160px] bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-100 dark:border-slate-800 flex flex-col gap-2">
+<p class="text-xs font-bold text-slate-400 uppercase">Chapter 1</p>
+<p class="text-md font-bold">Proverbs</p>
+<div class="mt-2 w-full bg-slate-100 dark:bg-slate-800 h-1 rounded-full">
+<div class="bg-primary h-full w-[100%]"></div>
+</div>
+<p class="text-[10px] text-slate-400 text-right">Completed</p>
+</div>
+</div>
+</section>
+<!-- Today's One-Line Prayer -->
+<section class="mb-8">
+<h2 class="text-lg font-bold mb-3">One-Line Prayer</h2>
+<div class="bg-primary/10 border-l-4 border-primary p-6 rounded-r-xl">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">format_quote</span>
+<div>
+<p class="text-lg italic font-medium text-slate-800 dark:text-slate-200 leading-relaxed mb-4">
+                            "Lord, guide my steps today and let your light shine through me in every conversation I have."
+                        </p>
+<button class="text-sm font-bold flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-sm">share</span> Share Prayer
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white/90 dark:bg-slate-950/90 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800 px-6 py-3 z-50">
+<div class="max-w-md mx-auto flex justify-between items-center">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined fill-1">home</span>
+<span class="text-[10px] font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="text-[10px] font-medium">Read</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="text-[10px] font-medium">Pray</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</a>
+</div>
+</nav>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .fill-1 {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</body></html>
