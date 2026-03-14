@@ -6,6 +6,7 @@
 const ALLOWED_ORIGINS = [
   "http://localhost:3000",
   "http://localhost:3001",
+  "https://jinsikhan.github.io",
   process.env.NEXT_PUBLIC_APP_URL,
 ].filter(Boolean) as string[];
 
