@@ -9,13 +9,13 @@ class AppColors {
   static const int stitchBgDark = 0xFF152210;
   static const int stitchCardDark = 0xFF1E293B; // slate-900
 
-  static const int pointLight = 0xFFC8956C;
-  static const int pointDark = 0xFFD4A574;
+  static const int pointLight = 0xFF3B82F6;
+  static const int pointDark = 0xFF60A5FA;
   static const int heart = 0xFFED4956;
-  static const int streak = 0xFFFD8D14;
+  static const int streak = 0xFF2563EB;
 
-  static const Color point = Color(stitchPrimary);
-  static const Color pointEmphasis = Color(0xFF3BC00F);
+  static const Color point = Color(0xFF3B82F6);
+  static const Color pointEmphasis = Color(0xFF2563EB);
 
   // Light (Stitch: background-light #f6f8f6)
   static const Color backgroundLight = Color(stitchBgLight);
@@ -112,7 +112,7 @@ ThemeData buildLightTheme() {
 }
 
 ThemeData buildDarkTheme() {
-  const pointD = Color(AppColors.stitchPrimary);
+  const pointD = Color(0xFF3B82F6);
   return ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,

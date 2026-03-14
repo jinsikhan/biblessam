@@ -26,7 +26,7 @@ export async function GET(request: NextRequest) {
     return Response.json({ success: false, error: "Invalid book or chapter" }, { status: 400, headers });
   }
 
-  const cached = aiCache.getExplanation<{ explanation: string; application: string }>(safeBook, safeChapter, lang);
+  const cached = aiCache.getExplanation<{ explanation: string; summary?: string[]; application: string }>(safeBook, safeChapter, lang);
   if (cached) {
     return Response.json({ success: true, ...cached }, { headers });
   }

@@ -4,12 +4,14 @@ import '../app/config.dart';
 
 class AiExplanationResult {
   final String explanation;
+  final List<String> summary;
   final String application;
   /// JSON 파싱 실패 후 서버가 마크다운 원문으로 반환한 경우 true — 모달로만 표시
   final bool isMarkdownFallback;
 
   AiExplanationResult({
     required this.explanation,
+    this.summary = const [],
     required this.application,
     this.isMarkdownFallback = false,
   });
@@ -17,6 +19,11 @@ class AiExplanationResult {
   factory AiExplanationResult.fromJson(Map<String, dynamic> json) {
     return AiExplanationResult(
       explanation: json['explanation'] as String? ?? '',
+      summary: (json['summary'] as List<dynamic>?)
+              ?.map((e) => e.toString())
+              .where((e) => e.trim().isNotEmpty)
+              .toList() ??
+          const [],
       application: json['application'] as String? ?? '',
       isMarkdownFallback: json['_markdownFallback'] == true,
     );

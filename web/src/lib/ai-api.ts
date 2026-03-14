@@ -15,6 +15,8 @@ const REQUEST_TIMEOUT_MS = 30_000;
 
 export interface ExplanationResult {
   explanation: string;
+  /** 핵심 요약 정리 (3~5개) */
+  summary?: string[];
   application: string;
   /** JSON 파싱 실패 후 마크다운 원문으로 반환된 경우 true — 클라이언트에서 모달로만 표시 */
   _markdownFallback?: boolean;
@@ -81,6 +83,7 @@ const APPLICATION_SUFFIX_KO = `
 JSON 형식으로만 응답해 주세요. 다른 설명 없이 JSON만 출력하세요. explanation과 application 값 안에서 줄바꿈은 반드시 \\n으로만 표기하고 실제 줄바꿈을 넣지 마세요.
 {
   "explanation": "쉬운 설명 텍스트",
+  "summary": ["요약 1", "요약 2", "요약 3"],
   "application": "오늘 이렇게 적용해 보세요: ..."
 }`;
 
@@ -89,8 +92,28 @@ const APPLICATION_SUFFIX_EN = `
 Respond only in JSON format. No other text, only JSON. Inside explanation and application strings use \\n for line breaks, not actual newlines.
 {
   "explanation": "Simple explanation text",
+  "summary": ["Summary 1", "Summary 2", "Summary 3"],
   "application": "Apply this today: ..."
 }`;
+
+function ensureStringArray(value: unknown): string[] | undefined {
+  if (!value) return undefined;
+  if (Array.isArray(value)) {
+    const items = value
+      .map((v) => (typeof v === "string" ? v.trim() : String(v ?? "").trim()))
+      .filter(Boolean);
+    return items.length ? items : undefined;
+  }
+  if (typeof value === "string") {
+    // "• ..." 또는 줄바꿈 요약을 배열로 정리
+    const lines = value
+      .split(/\\n|\n/)
+      .map((s) => s.replace(/^[\s•\-\*]+/, "").trim())
+      .filter(Boolean);
+    return lines.length ? lines : undefined;
+  }
+  return undefined;
+}
 
 const PRAYER_PROMPT_KO = `아래 성경 본문의 핵심 메시지를 바탕으로 짧고 따뜻한 기도문 1~2문장을 써 주세요.
 - "하나님"으로 시작하세요.
@@ -337,9 +360,11 @@ export async function generateExplanationStream(
     throw new Error("AI response was not valid JSON with explanation and application");
   }
   const explanation = ensureString(obj.explanation ?? obj.Explanation, "");
+  const summary = ensureStringArray((obj as any).summary ?? (obj as any).Summary);
   const application = ensureString(obj.application ?? obj.Application, "");
   return {
     explanation: explanation || fallbackKo,
+    ...(summary ? { summary } : {}),
     application: application || fallbackApp,
   };
 }
@@ -467,9 +492,11 @@ export async function generateExplanation(
     return { explanation: fallbackKo, application: fallbackApp };
   }
   const explanation = ensureString(obj.explanation ?? obj.Explanation, "");
+  const summary = ensureStringArray((obj as any).summary ?? (obj as any).Summary);
   const application = ensureString(obj.application ?? obj.Application, "");
   return {
     explanation: explanation || fallbackKo,
+    ...(summary ? { summary } : {}),
     application: application || fallbackApp,
   };
 }

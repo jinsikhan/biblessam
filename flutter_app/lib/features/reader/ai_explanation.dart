@@ -19,6 +19,7 @@ class AiExplanationPanel extends StatefulWidget {
 
 class _AiExplanationPanelState extends State<AiExplanationPanel> {
   String? _explanation;
+  List<String> _summary = const [];
   String? _application;
   bool _loading = false;
   String? _error;
@@ -39,6 +40,7 @@ class _AiExplanationPanelState extends State<AiExplanationPanel> {
         final json = jsonDecode(cached) as Map<String, dynamic>;
         setState(() {
           _explanation = json['explanation'] as String?;
+          _summary = (json['summary'] as List<dynamic>?)?.map((e) => e.toString()).toList() ?? const [];
           _application = json['application'] as String?;
           _isMarkdownFallback = json['_markdownFallback'] == true;
         });
@@ -68,6 +70,7 @@ class _AiExplanationPanelState extends State<AiExplanationPanel> {
       setState(() {
         _explanation = result.explanation;
         _application = result.application;
+        _summary = result.summary;
         _isMarkdownFallback = result.isMarkdownFallback;
         _loading = false;
         _error = null;
@@ -77,6 +80,7 @@ class _AiExplanationPanelState extends State<AiExplanationPanel> {
         widget.chapter,
         jsonEncode({
           'explanation': result.explanation,
+          if (result.summary.isNotEmpty) 'summary': result.summary,
           'application': result.application,
           if (result.isMarkdownFallback) '_markdownFallback': true,
         }),
@@ -168,6 +172,23 @@ class _AiExplanationPanelState extends State<AiExplanationPanel> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          if (_summary.isNotEmpty) ...[
+            Text(
+              '요약 정리',
+              style: theme.textTheme.titleSmall?.copyWith(
+                color: AppColors.point,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 6),
+            ..._summary.take(6).map(
+              (s) => Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: Text('• $s', style: theme.textTheme.bodyLarge),
+              ),
+            ),
+            const SizedBox(height: 12),
+          ],
           if (_explanation != null && _explanation!.isNotEmpty)
             MarkdownBody(
               data: _explanation!,
@@ -219,6 +240,16 @@ class _AiExplanationPanelState extends State<AiExplanationPanel> {
   void _openExplanationModal(BuildContext context, ThemeData theme, Color cardBg) {
     if (_explanation == null && _application == null) return;
     final buffer = StringBuffer();
+    if (_summary.isNotEmpty) {
+      buffer.writeln('## 요약 정리');
+      buffer.writeln();
+      for (final s in _summary.take(10)) {
+        buffer.writeln('- $s');
+      }
+      buffer.writeln();
+      buffer.writeln('---');
+      buffer.writeln();
+    }
     if (_explanation != null && _explanation!.isNotEmpty) buffer.writeln(_explanation);
     if (_application != null && _application!.isNotEmpty) {
       buffer.writeln();
