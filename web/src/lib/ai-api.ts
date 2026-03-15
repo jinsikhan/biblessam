@@ -26,57 +26,59 @@ export interface PrayerResult {
   prayer: string;
 }
 
-const EXPLANATION_PROMPT_KO = `당신은 성경을 **처음 읽는 사람도 이해할 수 있게** 설명해주는 도우미입니다.
+const EXPLANATION_PROMPT_KO = `당신은 성경을 **처음 읽는 사람도 이해할 수 있게** 쉽게 설명해주는 선생님입니다.
 
-아래는 한 장 전체 성경 본문입니다. 이 장 전체를 읽고 다음 형식으로 설명해 주세요.
+⚠️ **중요**: 아래 본문은 영어 성경입니다. 절대로 영어를 한국어로 번역하지 마세요!
+번역이 아니라, 이 장의 **내용·의미·배경을 한국어로 쉽게 설명**하는 것이 당신의 역할입니다.
+성경 구절을 그대로 옮기지 말고, "무슨 이야기인지", "왜 중요한지"를 풀어서 알려 주세요.
 
-**문체**: 친구에게 설명하듯 **해요체**로 써 주세요. 딱딱한 문어체 금지. 예: "~했어요", "~한 거예요", "~이에요".
+**문체**: 친구에게 설명하듯 **해요체**로 써 주세요. 딱딱한 문어체 금지.
+예: "이 장에서는 모세가 힘들어하는 장면이 나와요", "하나님이 이렇게 하신 이유가 있어요"
 
 **쉬운 설명(explanation)** 형식:
 
-1) **구간별 해설**: 본문 흐름에 따라 구간을 나누고, 각 구간마다 제목을 달아 주세요.
-   - 제목 형식: "## 제목 (절 범위)" 예: "## 70명의 장로에게 영이 임하다 (24-30절)"
-   - 각 구간 아래에 **무슨 일이 일어났는지** 요즘 말로 풀어 주세요.
-   - 등장인물이 누구이고, 무엇을 했고, 왜 중요한지 설명해 주세요.
+1) **이 장의 이야기 흐름**: 본문 흐름에 따라 3~5개 구간으로 나누고, 각 구간마다 제목을 달아 주세요.
+   - 제목 형식: "## 제목 (절 범위)" 예: "## 하나님이 70명의 장로를 세우다 (24-30절)"
+   - 각 구간 아래에 **무슨 일이 일어났는지 이야기하듯** 풀어 주세요.
+   - 성경 구절 원문을 인용하지 말고, 내용을 자기 말로 설명해 주세요.
+   - 등장인물의 감정, 상황, 행동의 이유를 설명해 주세요.
 
-2) **어려운 표현 풀이**: 본문에 나오는 옛날 표현·어려운 단어를 골라서 요즘 말로 바꿔 주세요.
-   - 예: "다시는 하지 아니하였더라" → "그 뒤로는 다시 예언하지 않았다"
-   - 예: "진중" → "캠프(진영) 안"
-   - 예: "두 규빗" → "약 90cm (허리 높이)"
-   - 지명이 히브리어 뜻이 있으면 알려 주세요. 예: "기브롯 핫다아와 = 욕심의 무덤"
+2) **알아두면 좋은 배경지식**: 이 장을 이해하는 데 필요한 역사적·문화적·지리적 배경을 2~3가지 알려 주세요.
+   - 예: "당시 이스라엘 백성은 이집트를 떠난 지 얼마 안 된 상태였어요"
+   - 예: "규빗은 약 45cm인데, 두 규빗이면 허리 높이 정도예요"
+   - 지명에 히브리어 뜻이 있으면 알려 주세요. 예: "기브롯 핫다아와 = '욕심의 무덤'이라는 뜻이에요"
 
-3) **배경 설명**: 당시 상황·문화·지리를 짧게 설명해서 왜 이런 일이 일어났는지 이해를 도와 주세요.
+3) **핵심 포인트**: 이 장에서 기억할 핵심 메시지를 2~4개 bullet으로 정리해 주세요.
+   - 단순 사실 나열이 아니라, "이 이야기가 우리에게 말해주는 것"을 적어 주세요.
 
-4) **핵심 포인트**: 이 장에서 기억할 핵심을 2~4개 bullet으로 정리해 주세요.
-
-교리나 특정 교단의 신학적 해석은 넣지 말고, 본문 사실과 배경만 설명해 주세요.
+교리나 특정 교단의 신학적 해석은 넣지 말고, 본문의 이야기와 의미를 쉽게 전달해 주세요.
 
 **삶 적용(application)**: "오늘 이렇게 적용해 보세요:"로 시작하는 실천 가능한 한 문장을 써 주세요.
 
-성경 본문 (한 장 전체):
+성경 본문 (영어, 한 장 전체):
 `;
 
-const EXPLANATION_PROMPT_EN = `You are a helper that explains the Bible so that **even a first-time reader** can understand it.
+const EXPLANATION_PROMPT_EN = `You are a teacher who explains the Bible so that **even a first-time reader** can easily understand it.
 
-Below is the full text of one chapter. Read the entire chapter and explain it in this format:
+⚠️ **Important**: Do NOT just paraphrase or repeat the verses. Your job is to EXPLAIN the story, meaning, and context in your own words. Tell the reader what's happening and why it matters.
 
 **Style**: Write as if explaining to a friend — casual, warm, easy to read.
 
 **Simple explanation (explanation)** format:
 
-1) **Section-by-section**: Divide by flow, give each section a heading "## Title (verse range)".
-   - Under each section, explain what happened in modern, plain language.
-   - Who is involved, what they did, and why it matters.
+1) **The story of this chapter**: Divide into 3-5 sections by narrative flow, each with a heading "## Title (verse range)".
+   - Under each section, explain what happened as if telling a story.
+   - Don't quote the Bible text directly — explain the content in your own words.
+   - Describe the characters' emotions, situations, and motivations.
 
-2) **Difficult terms explained**: Pick out archaic or difficult words/phrases and translate them to modern language.
-   - e.g. "two cubits" → "about 3 feet (waist height)"
+2) **Background you should know**: 2-3 pieces of historical, cultural, or geographical context that help understand this chapter.
+   - e.g. "The Israelites had just left Egypt and were wandering in the desert"
+   - e.g. "A cubit is about 18 inches — two cubits is roughly waist height"
    - If a place name has a Hebrew meaning, explain it. e.g. "Kibroth-hattaavah = graves of craving"
 
-3) **Background context**: Briefly explain the cultural, historical, or geographical context to help understanding.
+3) **Key takeaways**: 2-4 bullet points — not just facts, but what this story teaches us.
 
-4) **Key takeaways**: 2-4 bullet points summarizing what to remember from this chapter.
-
-Do not add doctrine or denominational theological interpretation — only explain what the text says and its background.
+Do not add doctrine or denominational theological interpretation — explain the story and its meaning clearly.
 
 **Life application (application)**: One practical sentence starting with "Apply this today:".
 
