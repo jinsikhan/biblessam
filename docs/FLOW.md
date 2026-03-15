@@ -51,10 +51,10 @@ flowchart TD
 
     LOGIN --> |로그인 시| SYNC[데이터 동기화]
 
-    style READER fill:#EFF6FF,stroke:#3B82F6,stroke-width:2px
-    style AI_SHOW fill:#EFF6FF,stroke:#3B82F6
+    style READER fill:#F5F3FF,stroke:#8B5CF6,stroke-width:2px
+    style AI_SHOW fill:#F5F3FF,stroke:#8B5CF6
     style AI_LOADING fill:#F5F5F5,stroke:#DDD
-    style STREAK_DONE fill:#EFF6FF,stroke:#2563EB
+    style STREAK_DONE fill:#F5F3FF,stroke:#7C3AED
     style FAV_ADD fill:#FFE8EA,stroke:#ED4956
 ```
 
@@ -163,8 +163,8 @@ flowchart TD
     LEVEL --> |아니오| FIRE1[🔥 불꽃 1개]
     LEVEL --> |예| FIRE2[🔥🔥 금색 불꽃]
 
-    style MARK fill:#EFF6FF,stroke:#2563EB,stroke-width:2px
-    style FIRE2 fill:#EFF6FF,stroke:#2563EB
+    style MARK fill:#F5F3FF,stroke:#7C3AED,stroke-width:2px
+    style FIRE2 fill:#F5F3FF,stroke:#7C3AED
 ```
 
 ---
@@ -193,7 +193,7 @@ flowchart LR
     LOCAL_AI -.->|서버 캐시와 별도| REDIS_AI
 
     style 비로그인 fill:#F0F8FF,stroke:#4A90D9
-    style 서버 fill:#EFF6FF,stroke:#3B82F6
+    style 서버 fill:#F5F3FF,stroke:#8B5CF6
 ```
 
 ---

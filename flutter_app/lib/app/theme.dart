@@ -9,13 +9,13 @@ class AppColors {
   static const int stitchBgDark = 0xFF152210;
   static const int stitchCardDark = 0xFF1E293B; // slate-900
 
-  static const int pointLight = 0xFF3B82F6;
-  static const int pointDark = 0xFF60A5FA;
+  static const int pointLight = 0xFF8B5CF6;
+  static const int pointDark = 0xFFA78BFA;
   static const int heart = 0xFFED4956;
-  static const int streak = 0xFF2563EB;
+  static const int streak = 0xFF7C3AED;
 
-  static const Color point = Color(0xFF3B82F6);
-  static const Color pointEmphasis = Color(0xFF2563EB);
+  static const Color point = Color(0xFF8B5CF6);
+  static const Color pointEmphasis = Color(0xFF7C3AED);
 
   // Light (Stitch: background-light #f6f8f6)
   static const Color backgroundLight = Color(stitchBgLight);
@@ -32,8 +32,8 @@ class AppColors {
   static const Color textSecondaryDark = Color(0xFF94A3B8);
 
   // 한 줄 기도 / AI 설명 카드 배경 (라이트: amber-50, 다크: 짙은 앰버 톤)
-  static const Color explanationCardBgLight = Color(0xFFFFF8F0);
-  static const Color explanationCardBgDark = Color(0xFF2A2520);
+  static const Color explanationCardBgLight = Color(0xFFF5F3FF);
+  static const Color explanationCardBgDark = Color(0xFF1E1527);
 
   // Shimmer / skeleton
   static const Color shimmerBase = Color(0xFFE5E5E5);
@@ -112,7 +112,7 @@ ThemeData buildLightTheme() {
 }
 
 ThemeData buildDarkTheme() {
-  const pointD = Color(0xFF3B82F6);
+  const pointD = Color(0xFFA78BFA);
   return ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
